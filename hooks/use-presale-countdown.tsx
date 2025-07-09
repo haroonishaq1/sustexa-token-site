@@ -68,12 +68,17 @@ const getCurrentPhaseInfo = () => {
 const calculateTimeRemaining = (targetTime: number) => {
   const now = Date.now()
   const remainingMs = Math.max(0, targetTime - now)
-  const totalSeconds = Math.ceil(remainingMs / 1000) // Use Math.ceil to round up
+  
+  // Use Math.ceil for minutes so that 1:59 shows as 2 minutes in the UI
+  const totalMinutes = Math.ceil(remainingMs / (60 * 1000))
+  
+  // Use Math.floor for seconds for accurate counting
+  const totalSeconds = Math.floor(remainingMs / 1000)
   
   return {
-    days: Math.floor(totalSeconds / (24 * 60 * 60)),
-    hours: Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60)),
-    minutes: Math.floor((totalSeconds % (60 * 60)) / 60),
+    days: Math.floor(totalMinutes / (24 * 60)),
+    hours: Math.floor((totalMinutes % (24 * 60)) / 60),
+    minutes: totalMinutes % 60,
     seconds: totalSeconds % 60
   }
 }
