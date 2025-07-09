@@ -15,10 +15,25 @@ interface CountdownState {
   title: string
 }
 
-// Phase 1: July 10, 2025 at 8:00 PM German time (CEST) - Presale 1 ends
-const PHASE_1_END_TIME = new Date('2025-07-10T20:00:00+02:00').getTime()
+// Get or set Phase 1 end time in localStorage (once set, it won't change on refresh)
+const getPhase1EndTime = () => {
+  if (typeof window === 'undefined') return Date.now() + (3 * 60 * 1000);
+  
+  const savedTime = localStorage.getItem('phase1EndTime');
+  if (savedTime) {
+    return parseInt(savedTime, 10);
+  }
+  
+  // If no saved time, set it to 3 minutes from now
+  const newEndTime = Date.now() + (3 * 60 * 1000);
+  localStorage.setItem('phase1EndTime', newEndTime.toString());
+  return newEndTime;
+}
 
-// Phase 2: August 15, 2025 at 8:00 PM German time (CEST) - Presale 2 ends
+// Phase 1: Dynamic end time that persists across refreshes
+const PHASE_1_END_TIME = getPhase1EndTime()
+
+// Phase 2: August 15, 2025 at 8:00 PM German time (CEST) - Presale 1 ends
 const PHASE_2_END_TIME = new Date('2025-08-15T20:00:00+02:00').getTime()
 
 // Helper function to determine current phase and target time
@@ -53,7 +68,7 @@ const getCurrentPhaseInfo = () => {
 const calculateTimeRemaining = (targetTime: number) => {
   const now = Date.now()
   const remainingMs = Math.max(0, targetTime - now)
-  const totalSeconds = Math.floor(remainingMs / 1000)
+  const totalSeconds = Math.ceil(remainingMs / 1000) // Use Math.ceil to round up
   
   return {
     days: Math.floor(totalSeconds / (24 * 60 * 60)),
