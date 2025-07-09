@@ -266,7 +266,24 @@ export default function DashboardPage() {
     // Always working with SOL since currency is fixed
     const solAmount = Number(spendAmount);
 
-    const tokensToReceive = parseFloat(tokenAmount.replace(/,/g, ''));
+    // Check if SOL price is available
+    if (!solPriceUSD || solPriceUSD <= 0) {
+      showNotification('SOL price not available. Please wait a moment and try again.', 'error');
+      return;
+    }
+
+    // Recalculate tokens using the same logic to avoid precision issues
+    const SUSTEXA_USD_PRICE = 0.002;
+    const usdValue = solAmount * solPriceUSD;
+    const tokensToReceive = usdValue / SUSTEXA_USD_PRICE;
+
+    // Debug logging for precision issues
+    console.log('💰 Purchase Debug Info:');
+    console.log(`SOL Amount: ${solAmount}`);
+    console.log(`SOL Price USD: ${solPriceUSD}`);
+    console.log(`USD Value: ${usdValue}`);
+    console.log(`Tokens to Receive: ${tokensToReceive}`);
+    console.log(`Displayed Token Amount: ${tokenAmount}`);
 
     // Basic validation
     if (solAmount <= 0) {
