@@ -102,11 +102,11 @@ export async function POST(request: NextRequest) {
     // Get current SOL price from the same endpoint as frontend
     let solPriceUSD = 150; // Fallback price
     try {
-      const solPriceResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/solana-price`);
+      const solPriceResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/sol-price`);
       if (solPriceResponse.ok) {
         const priceData = await solPriceResponse.json();
         solPriceUSD = priceData.price;
-        console.log('💰 API: Current SOL price:', solPriceUSD);
+        console.log('💰 API: Current SOL price from sol-price API:', solPriceUSD);
       }
     } catch (error) {
       console.warn('⚠️ API: Failed to fetch SOL price, using fallback:', solPriceUSD);
@@ -128,9 +128,16 @@ export async function POST(request: NextRequest) {
       difference: Math.abs(solAmount - expectedSolAmount)
     });
 
-    // Allow for small rounding differences (0.1% tolerance)
-    const tolerance = expectedSolAmount * 0.001;
+    // Allow for small rounding differences (0.5% tolerance to handle price fluctuations)
+    const tolerance = expectedSolAmount * 0.005;
     if (Math.abs(solAmount - expectedSolAmount) > tolerance) {
+      console.error('❌ API: Price mismatch detected:', {
+        expectedSolAmount,
+        receivedSolAmount: solAmount,
+        difference: Math.abs(solAmount - expectedSolAmount),
+        tolerance,
+        percentDifference: ((Math.abs(solAmount - expectedSolAmount) / expectedSolAmount) * 100).toFixed(2) + '%'
+      });
       return NextResponse.json(
         { error: `Price calculation mismatch. Expected: ${expectedSolAmount.toFixed(6)} SOL, Received: ${solAmount.toFixed(6)} SOL` },
         { status: 400 }
