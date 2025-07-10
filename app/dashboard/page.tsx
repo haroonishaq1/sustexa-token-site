@@ -222,17 +222,17 @@ export default function DashboardPage() {
     calculateTokens(value);
   };
 
-  // Check if amount is valid (minimum 0.01 SOL, maximum 1 SOL)
+  // Check if amount is valid (minimum 0.1 SOL, maximum 1 SOL)
   const isAmountValid = () => {
     const amount = Number(spendAmount);
-    return !spendAmount || amount === 0 || (amount >= 0.01 && amount <= 1);
+    return !spendAmount || amount === 0 || (amount >= 0.1 && amount <= 1);
   };
 
   const getAmountError = () => {
     const amount = Number(spendAmount);
     if (spendAmount && amount > 0) {
-      if (amount < 0.01) {
-        return 'Minimum amount should be 0.01 SOL';
+      if (amount < 0.1) {
+        return 'Minimum amount should be 0.1 SOL';
       } else if (amount > 1) {
         return 'Maximum amount should be 1 SOL';
       }
@@ -253,8 +253,8 @@ export default function DashboardPage() {
     }
 
     // Check minimum amount validation
-    if (Number(spendAmount) < 0.01) {
-      showNotification('Minimum purchase amount is 0.01 SOL', 'error');
+    if (Number(spendAmount) < 0.1) {
+      showNotification('Minimum purchase amount is 0.1 SOL', 'error');
       return;
     }
 
@@ -590,7 +590,7 @@ export default function DashboardPage() {
 
               {/* Transaction Info */}
               <div className="text-center text-green-200/60 text-xs sm:text-sm space-y-1">
-                <p>Minimum Purchase: 0.01 SOL</p>
+                <p>Minimum Purchase: 0.1 SOL</p>
               </div>
             </div>
           </div>

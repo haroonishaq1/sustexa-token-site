@@ -18,15 +18,18 @@ interface CountdownState {
 // Get or set Phase 1 end time in localStorage (once set, it won't change on refresh)
 // To reset timer: run localStorage.removeItem('phase1EndTime') in browser console and refresh
 const getPhase1EndTime = () => {
-  if (typeof window === 'undefined') return Date.now() + (1 * 60 * 1000);
+  if (typeof window === 'undefined') {
+    // July 10, 2025, 8:00 PM German time (CEST = UTC+2)
+    return new Date('2025-07-10T20:00:00+02:00').getTime();
+  }
   
   const savedTime = localStorage.getItem('phase1EndTime');
   if (savedTime) {
     return parseInt(savedTime, 10);
   }
   
-  // If no saved time, set it to 1 minute from now
-  const newEndTime = Date.now() + (1 * 60 * 1000);
+  // If no saved time, set it to July 10, 2025, 8:00 PM German time (CEST = UTC+2)
+  const newEndTime = new Date('2025-07-10T20:00:00+02:00').getTime();
   localStorage.setItem('phase1EndTime', newEndTime.toString());
   return newEndTime;
 }
