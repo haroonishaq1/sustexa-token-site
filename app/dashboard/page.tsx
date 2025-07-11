@@ -525,7 +525,7 @@ export default function DashboardPage() {
                         : 'border-green-500/30 focus:border-green-400'
                     }`}
                     step="0.01"
-                    min="0.01"
+                    min="0.005"
                     value={spendAmount}
                     onChange={(e) => handleAmountChange(e.target.value)}
                     style={{ 

@@ -30,7 +30,7 @@ export default function PresaleCountdown() {
   
   // Dynamic rates based on live SOL price
   const presale1Rate = solPriceUSD > 0 ? (solPriceUSD / 0.002).toLocaleString(undefined, { maximumFractionDigits: 0 }) : '75,725'
-  const presale2Rate = solPriceUSD > 0 ? (solPriceUSD / 0.01).toLocaleString(undefined, { maximumFractionDigits: 0 }) : '15,145'
+  const presale2Rate = solPriceUSD > 0 ? (solPriceUSD / 0.005).toLocaleString(undefined, { maximumFractionDigits: 0 }) : '30,290'
 
   return (
     <div className="max-w-5xl mx-auto p-8 bg-gradient-to-br from-green-600 via-emerald-700 to-black rounded-2xl border border-green-500/30 shadow-2xl backdrop-blur-sm">
@@ -129,7 +129,7 @@ export default function PresaleCountdown() {
             <h4 className="text-green-300 font-semibold text-center mb-3">PRESALE 2</h4>
             <div className="text-center rounded-lg p-3 transition-colors border border-green-500/20">
               <span className="text-green-100 text-lg font-bold">1 SOL = {presale2Rate} $SUS</span>
-              <p className="text-green-400/60 text-xs mt-1">$0.01 per token</p>
+              <p className="text-green-400/60 text-xs mt-1">$0.005 per token</p>
             </div>
           </div>
         </div>
