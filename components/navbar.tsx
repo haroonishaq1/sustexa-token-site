@@ -22,6 +22,13 @@ export function Navbar() {
               Sustexa
             </span>
           </Link>
+          <a
+            href="/whitepaper.pdf"
+            download
+            className="ml-4 flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-105"
+          >
+            📄 Download Whitepaper
+          </a>
         </div>
         <NavigationMenu>
           <NavigationMenuList className="flex gap-4 md:gap-8">
