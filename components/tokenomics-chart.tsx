@@ -5,11 +5,11 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Sector } from "recharts"
 import Image from "next/image"
 
 const data = [
-	{ name: "Community & Rewards", value: 20, color: "#4ade80" },
-	{ name: "Liquidity & Exchange Pool", value: 10, color: "#2dd4bf" },
-	{ name: "Development", value: 40, color: "#22c55e" },
+	{ name: "Community & Rewards", value: 35, color: "#4ade80" },
+	{ name: "Development", value: 20, color: "#22c55e" },
+	{ name: "Marketing", value: 15, color: "#86efac" },
 	{ name: "Token Sale", value: 10, color: "#34d399" },
-	{ name: "Marketing", value: 10, color: "#86efac" },
+	{ name: "Liquidity & Exchange Pool", value: 10, color: "#2dd4bf" },
 	{ name: "Staking", value: 10, color: "#0d9488" }
 ]
 
