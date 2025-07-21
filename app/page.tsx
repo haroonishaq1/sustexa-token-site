@@ -319,14 +319,18 @@ export default function SustexaLanding() {
               </div>
             </div>
             <div className="bg-gradient-to-r from-green-800/80 to-black/80 rounded-2xl p-4 border border-green-500/30">
-              <div className="flex items-center gap-2 text-green-300">
-                <span className="font-semibold">Contract Address:</span>
-                <code className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-2 py-1 rounded text-sm">
-                  4n7QaoeSbNL5NFR5H7W2erEGAnTHsQwPrDL5q5FwwVFy
-                </code>
-                <Button size="sm" variant="ghost" className="text-green-400 hover:text-green-300">
-                  <Copy className="w-4 h-4" />
-                </Button>
+              <div className="space-y-3">
+                <div className="flex items-center justify-center gap-2 text-green-300">
+                  <span className="font-semibold text-sm md:text-base">Contract Address:</span>
+                </div>
+                <div className="flex flex-col sm:flex-row items-center gap-2 justify-center">
+                  <code className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-3 py-2 rounded text-xs sm:text-sm break-all w-full sm:w-auto text-center">
+                    4n7QaoeSbNL5NFR5H7W2erEGAnTHsQwPrDL5q5FwwVFy
+                  </code>
+                  <Button size="sm" variant="ghost" className="text-green-400 hover:text-green-300 shrink-0">
+                    <Copy className="w-4 h-4" />
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
