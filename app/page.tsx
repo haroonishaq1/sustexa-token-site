@@ -280,7 +280,7 @@ export default function SustexaLanding() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="/whitepaper.pdf"
+                  href="/Sustexa Whitepaper.pdf"
                   download
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
                 >
@@ -292,7 +292,7 @@ export default function SustexaLanding() {
                   Download Whitepaper
                 </a>
                 <a
-                  href="/whitepaper.pdf"
+                  href="/Sustexa Whitepaper.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-green-800/40 hover:bg-green-800/60 text-green-300 border border-green-500/30 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
